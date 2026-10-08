@@ -28,4 +28,13 @@ The DN348 dataset and DNwild dataset can be downloaded from [here](https://githu
 ## Training
 Train a model by: 
 ```text
+python train.py --dataset dn348 --gpu 0
+```
+-- datasets: which dataset to use, including dn348, dnwild
+--gpu: which GPU to use.
+## Test
+Test a model on dn348 or dnwild dataset by
+```text
+
+```
 
