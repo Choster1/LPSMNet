@@ -30,11 +30,14 @@ Train a model by:
 ```text
 python train.py --dataset dn348 --gpu 0
 ```
--- datasets: which dataset to use, including dn348, dnwild
---gpu: which GPU to use.
+-- datasets: which dataset to use, including dn348, dnwild.
+-- gpu: which GPU to use.
 ## Test
 Test a model on dn348 or dnwild dataset by
 ```text
-
+python train.py --test-only --resume 'model_path' --dataset dn348 --gpu 0
 ```
-
+-- test-only: Used for model testing.
+-- resume: the saved model path.
+-- datasets: which dataset to use, including dn348, dnwild.
+-- gpu: which GPU to use.
