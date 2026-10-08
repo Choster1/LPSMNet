@@ -23,7 +23,9 @@ data_path/
     ├──day
     ├──night
     ├──train_test_split
-text```
+```
 The DN348 dataset and DNwild dataset can be downloaded from [here](https://github.com/chenjingong/DN-ReID/tree/main/data_path).
 ## Training
 Train a model by: 
+```text
+
