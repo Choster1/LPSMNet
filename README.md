@@ -12,5 +12,17 @@ LPSMNet is a framework for day-night cross-domain vehicle re-identification(DN-V
 - CUDA 11.1
 - NVIDIA A30 GPU
 ## Datasets
-After downloading all datasets, please create a data_path/ folder in the root directory, and organize it as follows:
+After downloading all datasets, please create a `data_path/` folder in the root directory, and organize it as follows:
+```text
+data_path/
+├── dn348/
+    ├──day
+    ├──night
+    ├──train_test_split
+├── dnwild/
+    ├──day
+    ├──night
+    ├──train_test_split
 The DN348 dataset and DNwild dataset can be downloaded from [here](https://github.com/chenjingong/DN-ReID/tree/main/data_path). 
+## Training
+Train a model by: 
