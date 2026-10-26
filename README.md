@@ -1,7 +1,7 @@
 # LPSMNet
-# LPSMNet: Robust Day–Night Vehicle Re-Identification for Intelligent Transportation Systems
-by Mingfu Xiong, Zhang Jiang, Tengfei Tu, Javier Del Ser, Khan Muhammad
-<img width="1095" height="604" alt="image" src="https://github.com/user-attachments/assets/38ba938c-de36-4c6d-93d7-3cca41f9b4ee" />
+# Day-Night Vehicle Re-Identification for Camera-based Traffic Control: From Glare-Aware Feature Learning to Network-Level Route Guidance
+by Mingfu Xiong, Zhang Jiang, Tengfei Tu, Minghua Jiang, Mohammad Hijji, Javier Del Ser, Khan Muhammad
+<img width="1030" height="411" alt="image" src="https://github.com/user-attachments/assets/58343761-8cbb-4288-9139-911e702a7d34" />
 ## Introduction
 LPSMNet is a framework for day-night cross-domain vehicle re-identification(DN-VReID). It consists of two key modules: 
 - **Learnable Mask Module (LMM)**: adaptively suppresses glare and noise in nighttime images via a learnable mask, improving feature robustness under low-light conditions.
