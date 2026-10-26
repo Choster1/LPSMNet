@@ -41,3 +41,37 @@ python train.py --test-only --resume 'model_path' --dataset dn348 --gpu 0
 -- resume: the saved model path.
 -- datasets: which dataset to use, including dn348, dnwild.
 -- gpu: which GPU to use.
+## Traffic simulation
+The simulation/ folder reproduces the system-level results of the paper (Sections V and VI): a mesoscopic simulation of a 14-node, 18-link network with a motorway, a signalized arterial and a camera at every node. Vehicles are re-identified between consecutive cameras, link travel times are estimated from the matches, and a route guidance controller advises drivers every 60 s. Matching errors are generated from the feature distances measured for DNDM, SFM and LPSMNet.
+## Contents
+```text
+simulation/
+├── data/                  measured feature distances (DN-348, 50 test identities, 5 day + 5 night images each)
+│   ├── DNDM_distances.csv
+│   ├── SFM_distances.csv
+│   └── LPSMNet_distances.csv
+├── error_model.py         matching-error model built from the measured distances
+├── simulator.py           network, evening and morning scenarios, closed-loop simulator
+├── run_experiments.py     runs all simulations (resumable, optional parallel workers)
+├── analyze.py             tables and figures of the paper from the simulation results
+├── requirements.txt
+└── results/               results reported in the paper
+    ├── evening.csv, morning.csv          one row per simulation run
+    ├── summary.md                        all numbers reported in Section VI
+    ├── error_model_consistency.csv       check of the error model against the benchmarks (Section V)
+    ├── hourly.csv, sensitivity.csv       data of Figs. 4 and 5
+    └── figures/fig_moments.pdf, fig_sensitivity.pdf
+```
+## Requirements
+The simulation does not need PyTorch or a GPU. It runs with Python 3.8 or later:
+```text
+cd simulation
+pip install -r requirements.txt
+```
+## Distance files
+Each file lists one image pair per row:
+```text
+model,id_i,id_j,modality_i,modality_j,distance,label
+LPSMNet,0,0,day,day,1.335566,same
+```
+distance is the Euclidean distance between the L2-normalized embeddings of the two images, modality_* is day or night, and label is same or different. To evaluate another ReID model, add a file simulation/data/<MODEL>_distances.csv in the same format and add <MODEL> to MODELS in error_model.py.
