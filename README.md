@@ -42,7 +42,7 @@ python train.py --test-only --resume 'model_path' --dataset dn348 --gpu 0
 -- datasets: which dataset to use, including dn348, dnwild.
 -- gpu: which GPU to use.
 ## Traffic simulation
-The simulation/ folder reproduces the system-level results of the paper (Sections V and VI): a mesoscopic simulation of a 14-node, 18-link network with a motorway, a signalized arterial and a camera at every node. Vehicles are re-identified between consecutive cameras, link travel times are estimated from the matches, and a route guidance controller advises drivers every 60 s. Matching errors are generated from the feature distances measured for DNDM, SFM and LPSMNet.
+The `simulation/` folder reproduces the system-level results of the paper (Sections V and VI): a mesoscopic simulation of a 14-node, 18-link network with a motorway, a signalized arterial and a camera at every node. Vehicles are re-identified between consecutive cameras, link travel times are estimated from the matches, and a route guidance controller advises drivers every 60 s. Matching errors are generated from the feature distances measured for DNDM, SFM and LPSMNet.
 ## Contents
 ```text
 simulation/
@@ -74,4 +74,23 @@ Each file lists one image pair per row:
 model,id_i,id_j,modality_i,modality_j,distance,label
 LPSMNet,0,0,day,day,1.335566,same
 ```
-distance is the Euclidean distance between the L2-normalized embeddings of the two images, modality_* is day or night, and label is same or different. To evaluate another ReID model, add a file simulation/data/<MODEL>_distances.csv in the same format and add <MODEL> to MODELS in error_model.py.
+`distance` is the Euclidean distance between the L2-normalized embeddings of the two images, `modality_*` is `day` or `night`, and `label` is `same` or `different`. To evaluate another ReID model, add a file `simulation/data/<MODEL>_distances.csv` in the same format and add `<MODEL>` to `MODELS` in `error_model.py`.
+## Running the simulations
+Quick test (a few runs of each condition, about 2 minutes):
+```text
+python run_experiments.py --quick
+```
+Full experiments of the paper (evening period with sensitivity study, and morning period):
+```
+python run_experiments.py --workers 8
+```
+This performs 1,960 evening runs (400 main runs and 1,560 sensitivity runs) and 400 morning runs, about 1 h on a single core. Results are appended to results/evening.csv and results/morning.csv; an interrupted run continues where it stopped. Each scenario can also be run separately with --scenario evening or --scenario morning. Random seeds are fixed, so the runs reproduce the results in results/ exactly; delete or move these files before running to generate them again.
+| Experiment | Conditions | Replications |
+| :--- | :--- | :---: |
+| Main, evening (18:00–02:00) and morning (00:00–08:00) | no guidance, perfect sensing, 3 models × 2 matching strategies (naive, traffic-aware) | 50 |
+| Sensitivity, evening | night demand ×0.6 and ×1.4, compliance 0.4 and 1.0, logit sensitivity 1/60 and 1/240 s⁻¹, control interval 30 and 180 s | 20 per level |
+
+## Reproducing the tables and figures
+```
+python analyze.py
+```
