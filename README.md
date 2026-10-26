@@ -94,3 +94,4 @@ This performs 1,960 evening runs (400 main runs and 1,560 sensitivity runs) and 
 ```
 python analyze.py
 ```
+This writes `results/summary.md`, which contains the check of the error model against the benchmarks (Section V), Table VI and the paired comparisons (RQ1–RQ3), the results by hour of departure (Fig. 4) and the sensitivity study (RQ4, Fig. 5), together with the figures in `results/figures/`.
