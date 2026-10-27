@@ -1,6 +1,6 @@
 # LPSMNet
 # Day-Night Vehicle Re-Identification for Camera-based Traffic Control: From Glare-Aware Feature Learning to Network-Level Route Guidance
-by Mingfu Xiong, Zhang Jiang, Tengfei Tu, Minghua Jiang, Mohammad Hijji, Javier Del Ser, Khan Muhammad
+by Mingfu Xiong, Zhang Jiang, Minghua Jiang, Mohammad Hijji, Javier Del Ser, Khan Muhammad
 <img width="1030" height="411" alt="image" src="https://github.com/user-attachments/assets/58343761-8cbb-4288-9139-911e702a7d34" />
 ## Introduction
 LPSMNet is a framework for day-night cross-domain vehicle re-identification(DN-VReID). It consists of two key modules: 
